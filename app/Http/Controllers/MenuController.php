@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
-    public function create()
+    public function index()
     {
-        return view('menu.create');
+        $menus = Menu::all(); // Mengambil semua barang yang ada di database
+        return view('dashboard', compact('menus'));
     }
 
     public function store(Request $request)
@@ -19,5 +21,16 @@ class MenuController extends Controller
             'price' => 'required|numeric',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-}
+
+        $imagePath = $request->file('image')->store('uploads', 'public');
+
+        Menu::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'price' => $request->price,
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->back()->with('success', 'Menu created successfully!');
+    }
 }

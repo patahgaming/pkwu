@@ -90,7 +90,7 @@ section{
 }
 .kolom{
     margin-top: 150px;
-    margin-bottom: 50px;  
+    margin-bottom: 50px;
 }
 .d{
     font-weight: 500;
@@ -265,43 +265,17 @@ h3 {
         </section>
         <!--menu-->
         <h1>OUR MENU</h1>
-        <section class="product">
+    <section class="product">
+        @foreach($menus as $menu)
             <div class="card" style="width: 18rem; background-color: #DAD0CF;">
-            <img src="https://s6.imgcdn.dev/etUHu.png" alt="etUHu.png" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Dalgona Coffee</h5>
-                <p class="card-text">$1,29</p>
+                <img src="{{ asset('storage/' . $menu->image) }}" alt="{{ $menu->name }}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $menu->name }}</h5>
+                    <p class="card-text">${{ number_format($menu->price, 2) }}</p>
+                </div>
             </div>
-            </div>
-            <div class="card" style="width: 18rem; background-color: #DAD0CF;">
-            <img src="https://s6.imgcdn.dev/et1Lw.png" alt="et1Lw.png" style="margin-top: 50px; margin-bottom: 30px;" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Salted Coffee Mocha</h5>
-                <p class="card-text">$1,61</p>
-            </div>
-            </div>
-            <div class="card" style="width: 18rem; background-color: #DAD0CF;">
-            <img src="https://s6.imgcdn.dev/et7wt.png" alt="et7wt.png" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Vegan Coffee Jelly Dessert</h5>
-                <p class="card-text">$1,49</p>
-            </div>
-            </div>
-            <div class="card" style="width: 18rem; background-color: #DAD0CF;">
-            <img src="https://s6.imgcdn.dev/etyRv.png" alt="etyRv.png" style="margin-bottom: 20px;" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Americano</h5>
-                <p class="card-text">$2,49</p>
-            </div>
-            </div>
-            <div class="card" style="width: 18rem; background-color: #DAD0CF;">
-            <img src="https://s6.imgcdn.dev/etzCL.png" alt="etzCL.png" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">Iced Caramel Latte</h5>
-                <p class="card-text">$1,94</p>
-            </div>
-            </div>
-            </section>
+        @endforeach
+    </section>
     <div id="profile">
         <div class="footer">
             <div class="footer-section">
@@ -328,7 +302,7 @@ h3 {
                 </p>
             </div>
             <div class="footer-section">
-                <h3 class="j">FRIENDS</h3>
+                <h3 class="j">OUR TEAMS</h3>
                 <p>
                     <ul class="p">
                         <li>Audiva Shavina</li>

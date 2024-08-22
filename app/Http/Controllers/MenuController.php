@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -12,7 +11,11 @@ class MenuController extends Controller
         $menus = Menu::all(); // Mengambil semua barang yang ada di database
         return view('dashboard', compact('menus'));
     }
-
+    public function landing()
+    {
+        $menus = Menu::all(); // Mengambil semua barang yang ada di database
+        return view('welcome', compact('menus'));
+    }
     public function store(Request $request)
     {
         $request->validate([
